@@ -14,6 +14,7 @@
   --icon-fill-color: #afb1b8;
   --footer-social-bg-color: rgba(255, 255, 255, 0.1);
   --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+  --portfolio-cart-bg-color: rgba(33, 150, 243, 0.9);
 }
 
 body {
@@ -501,6 +502,32 @@ address {
 .projects-link-list .link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.projects-link-item:hover .projects-item-text {
+  transform: translateY(0);
+}
+
+.projects-item-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.projects-item-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  font-size: 18px;
+  line-height: 1.56;
+
+  color: var(--btn-text-color);
+  background-color: var(--portfolio-cart-bg-color);
+
+  padding: 63px 24px;
+
+  transform: translateY(100%);
+  transition: transform 250ms var(--cubic);
 }
 
 .projects-list-title {
