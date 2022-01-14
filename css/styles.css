@@ -12,6 +12,7 @@
   --hero-gradient-color: rgba(47, 48, 58, 0.4);
   --icon-fill-color: #afb1b8;
   --footer-social-bg-color: rgba(255, 255, 255, 0.1);
+  --cubic: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -37,12 +38,6 @@ address {
 .link {
   text-decoration: none;
   color: inherit;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.link:hover,
-.link:focus {
-  color: var(--accent-color);
 }
 
 .visually-hidden {
@@ -165,6 +160,7 @@ address {
   letter-spacing: 0.02em;
   padding-top: 32px;
   padding-bottom: 32px;
+  transition: color 250ms var(--cubic);
 }
 
 .header-link:hover,
@@ -307,6 +303,10 @@ address {
   margin-bottom: 16px;
 }
 
+.team .social-link {
+  transition: background-color 250ms var(--cubic), color 250ms var(--cubic);
+}
+
 .team .social-link:hover,
 .team .social-link:focus {
   background-color: var(--accent-color);
@@ -324,6 +324,7 @@ address {
   border: 1px solid var(--icon-fill-color);
   border-radius: 4px;
   color: var(--icon-fill-color);
+  transition: color 250ms var(--cubic), border-color 250ms var(--cubic);
 }
 
 .customer-link:hover,
@@ -369,6 +370,7 @@ address {
 
 .footer-link {
   color: var(--link-color);
+  transition: color 250ms var(--cubic);
 }
 
 .footer-link:hover,
@@ -450,14 +452,13 @@ address {
 .projects-link-list .link {
   display: flex;
   flex-direction: column;
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 250ms var(--cubic);
 }
 
 .projects-link-list .link:hover,
 .projects-link-list .link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
-  color: var(--main-text-color);
 }
 
 .projects-list-title {
