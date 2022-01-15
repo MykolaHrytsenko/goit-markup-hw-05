@@ -13,8 +13,9 @@
   --hero-gradient-color: rgba(47, 48, 58, 0.4);
   --icon-fill-color: #afb1b8;
   --footer-social-bg-color: rgba(255, 255, 255, 0.1);
-  --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-cubic: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   --portfolio-cart-bg-color: rgba(33, 150, 243, 0.9);
+  --backdrop-background-color: rgba(0, 0, 0, 0.2);
 }
 
 body {
@@ -162,7 +163,7 @@ address {
   letter-spacing: 0.02em;
   padding-top: 32px;
   padding-bottom: 32px;
-  transition: color 250ms var(--cubic);
+  transition: color var(--duration-cubic);
 }
 
 .header-link:hover,
@@ -236,7 +237,7 @@ address {
   color: var(--btn-text-color);
   padding: 10px 32px;
   border: none;
-  transition: background 250ms var(--cubic), box-shadow 250ms var(--cubic);
+  transition: background var(--duration-cubic), box-shadow var(--duration-cubic);
 }
 
 .hero-btn:focus,
@@ -344,7 +345,8 @@ address {
 }
 
 .team .social-link {
-  transition: background-color 250ms var(--cubic), color 250ms var(--cubic);
+  transition: background-color var(--duration-cubic),
+    color var(--duration-cubic);
 }
 
 .team .social-link:hover,
@@ -364,7 +366,7 @@ address {
   border: 1px solid var(--icon-fill-color);
   border-radius: 4px;
   color: var(--icon-fill-color);
-  transition: color 250ms var(--cubic), border-color 250ms var(--cubic);
+  transition: color var(--duration-cubic), border-color var(--duration-cubic);
 }
 
 .customer-link:hover,
@@ -410,7 +412,7 @@ address {
 
 .footer-link {
   color: var(--link-color);
-  transition: color 250ms var(--cubic);
+  transition: color var(--duration-cubic);
 }
 
 .footer-link:hover,
@@ -429,7 +431,7 @@ address {
 
 .footer .social-link {
   background-color: var(--footer-social-bg-color);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--duration-cubic);
 }
 
 .footer .social-link:hover,
@@ -475,8 +477,8 @@ address {
   border-color: transparent;
   padding: 6px 22px;
 
-  transition: color 250ms var(--cubic), background 250ms var(--cubic),
-    box-shadow 250ms var(--cubic);
+  transition: color var(--duration-cubic), background var(--duration-cubic),
+    box-shadow var(--duration-cubic);
 }
 
 .projects-btn:focus,
@@ -495,7 +497,7 @@ address {
 .projects-link-list .link {
   display: flex;
   flex-direction: column;
-  transition: box-shadow 250ms var(--cubic);
+  transition: box-shadow var(--duration-cubic);
 }
 
 .projects-link-list .link:hover,
@@ -527,7 +529,7 @@ address {
   padding: 63px 24px;
 
   transform: translateY(100%);
-  transition: transform 250ms var(--cubic);
+  transition: transform var(--duration-cubic);
 }
 
 .projects-list-title {
@@ -547,4 +549,56 @@ address {
   background: var(--btn-text-color);
   border: 1px solid var(--border-card-color);
   padding: 20px 24px;
+}
+
+/* ----- Modal ------ */
+.backdrop {
+  position: fixed;
+  top: 0;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--backdrop-background-color);
+  transition: opacity 500ms, visibility 500ms;
+}
+
+.backdrop.is-hidden {
+  transform: scale(0.5);
+}
+
+.modal {
+  width: 528px;
+  min-height: 581px;
+  background: var(--btn-text-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 500ms;
+}
+
+.modal-close {
+  width: 30px;
+  height: 30px;
+
+  background-color: var(--btn-text-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
