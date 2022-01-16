@@ -99,6 +99,7 @@ address {
   align-items: center;
   border-radius: 50%;
   color: var(--icon-fill-color);
+  transition: background-color var(--duration-cubic);
 }
 
 .social-icon {
@@ -184,7 +185,7 @@ address {
   border-radius: 2px;
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -1px;
 }
 
 .header-item-icon {
@@ -357,8 +358,11 @@ address {
 
 /* ----- Regular Customers ------ */
 
+.customer-list-item {
+  flex-basis: calc(100% / 6 - 30px);
+}
+
 .customer-link {
-  width: 170px;
   height: 92px;
   display: flex;
   justify-content: center;
@@ -431,7 +435,6 @@ address {
 
 .footer .social-link {
   background-color: var(--footer-social-bg-color);
-  transition: background-color var(--duration-cubic);
 }
 
 .footer .social-link:hover,
@@ -506,7 +509,8 @@ address {
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
-.projects-link-item:hover .projects-item-text {
+.projects-link-item .link:hover .projects-item-text,
+.projects-link-item .link:focus .projects-item-text {
   transform: translateY(0);
 }
 
@@ -552,6 +556,12 @@ address {
 }
 
 /* ----- Modal ------ */
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -559,11 +569,11 @@ address {
   width: 100vw;
   height: 100vh;
   background-color: var(--backdrop-background-color);
-  transition: opacity 500ms, visibility 500ms;
+  transition: opacity var(--duration-cubic), visibility var(--duration-cubic);
 }
 
-.backdrop.is-hidden {
-  transform: scale(0.5);
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.5);
 }
 
 .modal {
@@ -578,7 +588,7 @@ address {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  transition: transform 500ms;
+  transition: transform var(--duration-cubic);
 }
 
 .modal-close {
@@ -595,10 +605,4 @@ address {
   position: absolute;
   top: 8px;
   right: 8px;
-}
-
-.is-hidden {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
 }
